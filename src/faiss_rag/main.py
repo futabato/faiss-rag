@@ -20,7 +20,9 @@ splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
 chunks = splitter.split_documents(docs)
 
 # Step 3: ベクトル化（Embedding）
-embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+embedding_model = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
+)
 # embedding_model = OpenAIEmbeddings()  # OpenAI APIを使いたい場合はこちら
 
 # Step 4: ベクトル格納（FAISSインデックス作成）
@@ -30,7 +32,7 @@ vectorstore = FAISS.from_documents(chunks, embedding_model)
 qa = RetrievalQA.from_chain_type(
     llm=OpenAI(),  # または ChatOpenAI() にしてもOK
     chain_type="stuff",
-    retriever=vectorstore.as_retriever()
+    retriever=vectorstore.as_retriever(),
 )
 
 # Step 6: 質問応答
