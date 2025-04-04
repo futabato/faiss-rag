@@ -28,8 +28,13 @@ certifi==2025.1.31
     # via httpcore
     # via httpx
     # via requests
+cffi==1.17.1
+    # via cryptography
 charset-normalizer==3.4.1
+    # via pdfminer-six
     # via requests
+cryptography==44.0.2
+    # via pdfminer-six
 dataclasses-json==0.6.7
     # via langchain-community
 distro==1.9.0
@@ -160,11 +165,18 @@ packaging==24.2
     # via langsmith
     # via marshmallow
     # via transformers
+pdfminer-six==20250327
+    # via pdfplumber
+pdfplumber==0.11.6
+    # via faiss-rag
 pillow==11.1.0
+    # via pdfplumber
     # via sentence-transformers
 propcache==0.3.1
     # via aiohttp
     # via yarl
+pycparser==2.22
+    # via cffi
 pydantic==2.11.1
     # via fastapi
     # via langchain
@@ -178,6 +190,8 @@ pydantic-settings==2.8.1
     # via langchain-community
 pymupdf==1.25.5
     # via faiss-rag
+pypdfium2==4.30.1
+    # via pdfplumber
 python-dotenv==1.1.0
     # via dotenv
     # via pydantic-settings
@@ -200,6 +214,8 @@ requests==2.32.3
     # via transformers
 requests-toolbelt==1.0.0
     # via langsmith
+ruff==0.11.3
+    # via faiss-rag
 safetensors==0.5.3
     # via transformers
 scikit-learn==1.6.1
