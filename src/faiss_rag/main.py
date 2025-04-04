@@ -12,7 +12,7 @@ base_dir = Path.cwd()
 load_dotenv()
 
 # Step 1: 文書読み込み
-loader = PyMuPDFLoader(base_dir / "static" / "example_faq-manual-mPOS.pdf")
+loader = PyMuPDFLoader("static/example_faq-manual-mPOS.pdf")
 docs = loader.load()
 
 # Step 2: テキストのチャンク分割
