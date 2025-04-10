@@ -15,7 +15,7 @@ PDF形式の仕様書の情報をもとに、自然言語での質問応答が�
 | 2. テキストのチャンク分割 | `RecursiveCharacterTextSplitter` | 長文を適切なサイズのチャンクに分割し、検索精度を高める |
 | 3. ベクトル化（Embedding） | `sentence-transformers/all-MiniLM-L6-v2` （HuggingFace） | 各チャンクを意味ベクトルにし、類似検索可能な形式に変換する |
 | 4. ベクトル格納 | Faiss | ベクトル化された文書をベクトルDBに保存する |
-| 5. LLM連携（生成） | `OpenAI` （LangChain経由でGPT-3.5を利用？） | 検索で首都kうした文書片をもとに、自然な回答を生成する |
+| 5. LLM連携（生成） | `OpenAI` （LangChain経由でGPT-3.5を利用） | 検索で取得した文書片をもとに、自然な回答を生成する |
 | 6. 質問応答 | Retrieva1QA （LangChain） | ユーザの自然言語の質問に対して、文書の構造に基づいた回答を行う |
 
 例えば以下のような質問を実行する：
