@@ -18,8 +18,8 @@ base_dir = Path.cwd()
 load_dotenv()
 
 # Constants
-PDF_PATH = base_dir.parent.parent / "static/example_faq-manual-mPOS.pdf"
-FAISS_INDEX_PATH = base_dir.parent.parent / "static/faiss_index"
+PDF_PATH = base_dir / "static/example_faq-manual-mPOS.pdf"
+FAISS_INDEX_PATH = base_dir / "static/faiss_index"
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 # Custom prompt template
