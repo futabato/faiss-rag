@@ -121,7 +121,7 @@ def get_answer(vectorstore: FAISS, error_code: str | None) -> str:
         query = f"この仕様書に書かれている、エラーコード: {error_code}のときの「発生した場合の対処法」を教えてください。"
     retriever = get_filtered_retriever_cached(vectorstore, error_code)
     docs = retriever.get_relevant_documents(query)
-    if not docs:
+    if not docs and error_code is not None:
         print("Query:", query)
         answer = "この文書には記載されていません。"
         print("Answer:", answer)
