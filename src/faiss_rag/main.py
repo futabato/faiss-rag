@@ -108,14 +108,17 @@ def get_filtered_retriever_cached(vectorstore: FAISS, code: str) -> FAISS:
     )
 
 
-def get_answer(vectorstore: FAISS, error_code: str) -> str:
+def get_answer(vectorstore: FAISS, error_code: str | None) -> str:
     """
     Generate an answer based on the error code.
     :param vectorstore: FAISS vectorstore
     :param error_code: Error code to query
     :return: Answer string
     """
-    query = f"この仕様書に書かれている、エラーコード: {error_code}のときの「発生した場合の対処法」を教えてください。"
+    if error_code is None:
+        query = "取引履歴の参照・検索について教えてください。"
+    else:
+        query = f"この仕様書に書かれている、エラーコード: {error_code}のときの「発生した場合の対処法」を教えてください。"
     retriever = get_filtered_retriever_cached(vectorstore, error_code)
     docs = retriever.get_relevant_documents(query)
     if not docs:
@@ -151,3 +154,5 @@ if __name__ == "__main__":
     # Step 3: Query answers
     for code in ["108", "110", "3E5", "4F2"]:
         _ = get_answer(vectorstore, code)
+
+    _ = get_answer(vectorstore, None)  # Test with a non-existent code
